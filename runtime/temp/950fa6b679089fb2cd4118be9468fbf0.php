@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\index\index.htm";i:1505986431;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505985583;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1505986705;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\index\index.htm";i:1505987105;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1505995097;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -104,7 +104,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('admin/lst'); ?>">
                                     <span class="menu-text">
                                         管理列表                                    </span>
                                 <i class="menu-expand"></i>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"C:\wamp64\www\tp5\public/../application/admin\view\admin\add.htm";i:1505986875;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505985583;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1505986705;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"C:\wamp64\www\tp5\public/../application/admin\view\admin\add.htm";i:1506005168;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1505995097;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -105,7 +105,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('admin/lst'); ?>">
                                     <span class="menu-text">
                                         管理列表                                    </span>
                                 <i class="menu-expand"></i>
@@ -164,9 +164,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="#">用户管理</a>
+                        <a href="<?php echo url('admin/lst'); ?>">管理员管理</a>
                     </li>
-                    <li class="active">添加用户</li>
+                    <li class="active">添加管理员</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -183,24 +183,23 @@
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="" method="post">
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">用户名</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员账户</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" required="" type="text">
+                                <input class="form-control" id="username" placeholder="" name="username" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
 
                         <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">用户角色</label>
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
                             <div class="col-sm-6">
-                                <select name="group_id" style="width: 100%;">
-                                                                        <option selected="selected" value="8">测试</option>
-                                                                    </select>
+                                <input class="form-control" id="password" placeholder="" name="password" type="password">
                             </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
                         </div>  
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">保存信息</button>
+                                <button type="submit" class="btn btn-default">提交</button>
                             </div>
                         </div>
                     </form>
