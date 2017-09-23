@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\admin\edit.htm";i:1506094340;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1505995097;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\links\list.htm";i:1506152685;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506143156;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -133,6 +133,23 @@
 
                 <li>
                     <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-link"></i>
+                        <span class="menu-text">友情链接</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="<?php echo url('links/lst'); ?>">
+                                    <span class="menu-text">
+                                        链接列表                                   </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-gear"></i>
                         <span class="menu-text">系统</span>
                         <i class="menu-expand"></i>
@@ -155,56 +172,67 @@
         </div>
         <!-- /Page Sidebar -->
 
-        <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
                         <a href="#">系统</a>
                     </li>
-                    <li>
-                        <a href="<?php echo url('admin/lst'); ?>">管理员管理</a>
-                    </li>
-                    <li class="active">修改管理员</li>
-                </ul>
-            </div>
-            <!-- /Page Breadcrumb -->
+                                        <li class="active">链接管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+            
                 <!-- Page Body -->
                 <div class="page-body">
                     
+<button type="button" tooltip="添加链接" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url('links/add'); ?>'"> <i class="fa fa-plus"></i> Add
+</button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
-            <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">修改管理员信息</span>
-            </div>
             <div class="widget-body">
-                <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post">
-                        <!--隐藏域当前的id-->
-                        <input type="hidden" name="id" value="<?php echo $admins['id']; ?>">
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员账户</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" value="<?php echo $admins['username']; ?>" type="text">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="password" placeholder="" name="password" type="password">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 留空则表示不修改密码</p>
-                        </div>  
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">提交</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="4%">ID</th>
+                                <th class="text-center">链接名称</th>
+                                <th class="text-center">链接地址</th>
+                                <th class="text-center">链接描述</th>
+                                <th class="text-center" width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                            <tr>
+                                <td align="center"><?php echo $vo['id']; ?></td>
+                                <td align="center"><?php echo $vo['title']; ?></td>
+                                <td align="center"><a href="<?php echo $vo['url']; ?>" target="_blank"><?php echo $vo['url']; ?></a></td>
+                                <td align="center"><?php echo $vo['desc']; if($vo['desc'] != ''): ?>
+                                    <?php echo $vo['desc']; else: ?>
+                                    暂无描述
+                                <?php endif; ?>
+                                </td>
+                                <td align="center">
+                                    <a href="<?php echo url('links/edit', array('id' => $vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '<?php echo url('links/del', array('id' => $vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                         </tbody>
+                    </table>
+                </div>
+                <div style="text-align: right; margin-top: 10px;">
+                    <!--分页-->
+                    <?php echo $list->render(); ?>
                 </div>
             </div>
         </div>

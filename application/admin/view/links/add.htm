@@ -36,9 +36,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="{:url('admin/lst')}">管理员管理</a>
+                        <a href="{:url('admin/lst')}">链接管理</a>
                     </li>
-                    <li class="active">修改管理员</li>
+                    <li class="active">添加链接</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -49,31 +49,36 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">修改管理员信息</span>
+                <span class="widget-caption">新增链接</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="" method="post">
-                        <!--隐藏域当前的id-->
-                        <input type="hidden" name="id" value="{$admins.id}">
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员名称</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">链接标题</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" value="{$admins.username}" type="text">
+                                <input class="form-control" id="titile" placeholder="" name="title" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
 
                         <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">链接地址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="password" placeholder="" name="password" type="password">
+                                <input class="form-control" id="url" placeholder="" name="url" type="text">
                             </div>
-                            <p class="help-block col-sm-4 red">* 留空则表示不修改密码</p>
-                        </div>  
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">链接描述</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="desc" name="desc"></textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">修改</button>
+                                <button type="submit" class="btn btn-default">提交</button>
                             </div>
                         </div>
                     </form>

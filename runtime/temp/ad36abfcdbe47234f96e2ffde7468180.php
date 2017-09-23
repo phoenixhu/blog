@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"C:\wamp64\www\tp5\public/../application/admin\view\admin\add.htm";i:1506005168;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1505995097;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\links\edit.htm";i:1506155522;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506143156;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -133,6 +133,23 @@
 
                 <li>
                     <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-link"></i>
+                        <span class="menu-text">友情链接</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="<?php echo url('links/lst'); ?>">
+                                    <span class="menu-text">
+                                        链接列表                                   </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-gear"></i>
                         <span class="menu-text">系统</span>
                         <i class="menu-expand"></i>
@@ -164,9 +181,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="<?php echo url('admin/lst'); ?>">管理员管理</a>
+                        <a href="<?php echo url('links/lst'); ?>">链接管理</a>
                     </li>
-                    <li class="active">添加管理员</li>
+                    <li class="active">修改链接</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -177,26 +194,34 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增用户</span>
+                <span class="widget-caption">修改链接</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="" method="post">
+                        <input type="hidden" name="id" value="<?php echo $links['id']; ?>">
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员账户</label>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">链接标题</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" type="text">
+                                <input class="form-control" id="titile" placeholder="" name="title" value="<?php echo $links['title']; ?>" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>
 
                         <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">链接地址</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="password" placeholder="" name="password" type="password">
+                                <input class="form-control" id="url" placeholder="" name="url" value="<?php echo $links['url']; ?>" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>  
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">链接描述</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="desc" name="desc"><?php echo $links['desc']; ?></textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">提交</button>
