@@ -14,6 +14,6 @@
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 // 定义根目录
-define('SITE_URL', 'http://127.0.0.1/tp5');
+//define('SITE_URL', '/');
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
