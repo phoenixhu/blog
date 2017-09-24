@@ -6,7 +6,7 @@ class Admin extends Validate
 {
     // 验证字段
     protected $rule = [
-        'username'  =>  'require|max:25',
+        'username'  =>  'require|max:25|unique:admin',
         'password' =>  'require',
     ];
 
@@ -14,6 +14,7 @@ class Admin extends Validate
     protected $message  =   [
         'username.require' => '管理员名称必须填写',
         'username.max' => '管理员名称长度不得大于25位',
+        'username.unique' => '管理员名称已存在',
         'password.require' => '管理员密码必须填写',
     ];
 
