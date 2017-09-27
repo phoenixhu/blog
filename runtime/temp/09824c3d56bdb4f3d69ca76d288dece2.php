@@ -1,7 +1,7 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:63:"C:\wamp64\www\tp5\public/../application/admin\view\cate\add.htm";i:1506175739;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506173899;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:67:"C:\wamp64\www\tp5\public/../application/admin\view\article\edit.htm";i:1506493415;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506265074;}*/ ?>
 <!DOCTYPE html>
 <html><head>
-	    <meta charset="utf-8">
+    <meta charset="utf-8">
     <title>童老师ThinkPHP交流群：484519446</title>
 
     <meta name="description" content="Dashboard">
@@ -18,7 +18,13 @@
     <link href="__PUBLIC__/style/demo.css" rel="stylesheet">
     <link href="__PUBLIC__/style/typicons.css" rel="stylesheet">
     <link href="__PUBLIC__/style/animate.css" rel="stylesheet">
-    
+
+    <!--引入UEditor编辑器-->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+
 </head>
 <body>
 <!--头部引入-->
@@ -83,8 +89,8 @@
 
 <div class="main-container container-fluid">
     <div class="page-container">
-<!--左侧引入-->
-<!--左侧分离分离-->
+        <!--左侧引入-->
+        <!--左侧分离分离-->
         <!-- Page Sidebar -->
         <div class="page-sidebar" id="sidebar">
             <!-- Page Sidebar Header-->
@@ -140,7 +146,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('article/lst'); ?>">
                                     <span class="menu-text">
                                         文章列表                                    </span>
                                 <i class="menu-expand"></i>
@@ -199,57 +205,130 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="<?php echo url('cate/lst'); ?>">栏目管理</a>
+                        <a href="<?php echo url('article/lst'); ?>">文章管理</a>
                     </li>
-                    <li class="active">添加栏目</li>
+                    <li class="active">修改文章</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
-                <!-- Page Body -->
-                <div class="page-body">
-                    
-<div class="row">
-    <div class="col-lg-12 col-sm-12 col-xs-12">
-        <div class="widget">
-            <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增栏目</span>
-            </div>
-            <div class="widget-body">
-                <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post">
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目名称</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="catename" placeholder="" name="catename" type="text">
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">修改文章</span>
                             </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">提交</button>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+                                    <form class="form-horizontal" role="form" action="" enctype="multipart/form-data" method="post">
+                                        <!--隐藏域当前的id-->
+                                        <input type="hidden" name="id" value="<?php echo $article['id']; ?>">
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-2 control-label no-padding-right">文章标题</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="title" placeholder="" name="title" value="<?php echo $article['title']; ?>" type="text">
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">文章作者</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="author" placeholder="" name="author" value="<?php echo $article['author']; ?>" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">关键字</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="keywords" placeholder="" name="keywords" value="<?php echo $article['keywords']; ?>" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">文章描述</label>
+                                            <div class="col-sm-6">
+                                                <textarea class="form-control" id="desc" name="desc"><?php echo $article['desc']; ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                                            <div class="col-sm-6">
+                                                <input id="pic" placeholder="" name="pic" type="file" style="display: inline;">
+                                                <?php if($article['pic'] != ''): ?>
+                                                    <img src="__IMG__/<?php echo $article['pic']; ?>" height="50">
+                                                <?php else: ?>
+                                                    暂无缩略图
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">所属栏目</label>
+                                            <div class="col-sm-6">
+                                                <select name="cateid">
+                                                    <option value="">请选择栏目</option>
+                                                    <?php if(is_array($caters) || $caters instanceof \think\Collection || $caters instanceof \think\Paginator): $i = 0; $__LIST__ = $caters;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                                    <option <?php if($vo['id'] == $article['cateid']): ?> selected="selected" <?php endif; ?>
+                                                            value="<?php echo $vo['id']; ?>">
+                                                        <?php echo $vo['catename']; ?>
+                                                    </option>
+                                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                                </select>
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">是否推荐</label>
+                                            <div class="col-sm-6">
+                                                <label>
+                                                    <input <?php if($article['state'] == 1): ?> checked="checked"<?php endif; ?> class="checkbox-slider colored-darkorange" name="state" type="checkbox">
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="group_id" class="col-sm-2 control-label no-padding-right">文章内容</label>
+                                            <div class="col-sm-6">
+                                                <textarea id="content" name="content"><?php echo $article['content']; ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">提交</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
+
             </div>
+            <!-- /Page Body -->
         </div>
+        <!-- /Page Content -->
     </div>
 </div>
 
-                </div>
-                <!-- /Page Body -->
-            </div>
-            <!-- /Page Content -->
-		</div>	
-	</div>
+<!--Basic Scripts-->
+<script src="__PUBLIC__/style/jquery_002.js"></script>
+<script src="__PUBLIC__/style/bootstrap.js"></script>
+<script src="__PUBLIC__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__PUBLIC__/style/beyond.js"></script>
 
-	    <!--Basic Scripts-->
-    <script src="__PUBLIC__/style/jquery_002.js"></script>
-    <script src="__PUBLIC__/style/bootstrap.js"></script>
-    <script src="__PUBLIC__/style/jquery.js"></script>
-    <!--Beyond Scripts-->
-    <script src="__PUBLIC__/style/beyond.js"></script>
-    
+<!--实例化UEditor编辑器-->
+<script type="text/javascript">
+    UE.getEditor('content',{initialFrameWidth:1000, initialFrameHeight:400,});
+</script>
 
 
 </body></html>

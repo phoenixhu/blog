@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"C:\wamp64\www\tp5\public/../application/admin\view\admin\add.htm";i:1506096652;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506261097;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:67:"C:\wamp64\www\tp5\public/../application/admin\view\article\list.htm";i:1506489416;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506265074;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -140,7 +140,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('article/lst'); ?>">
                                     <span class="menu-text">
                                         文章列表                                    </span>
                                 <i class="menu-expand"></i>
@@ -190,54 +190,76 @@
         </div>
         <!-- /Page Sidebar -->
 
-        <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
                         <a href="#">系统</a>
                     </li>
-                    <li>
-                        <a href="<?php echo url('admin/lst'); ?>">管理员管理</a>
-                    </li>
-                    <li class="active">添加管理员</li>
-                </ul>
-            </div>
-            <!-- /Page Breadcrumb -->
+                                        <li class="active">文章管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+            
                 <!-- Page Body -->
                 <div class="page-body">
                     
+<button type="button" tooltip="添加文章" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url('article/add'); ?>'"> <i class="fa fa-plus"></i> Add
+</button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
-            <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增用户</span>
-            </div>
             <div class="widget-body">
-                <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post">
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员名称</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" type="text">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="password" placeholder="" name="password" type="password">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>  
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">提交</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="4%">ID</th>
+                                <th class="text-center">文章标题</th>
+                                <th class="text-center">文章作者</th>
+                                <th class="text-center">是否推荐</th>
+                                <th class="text-center" width="14%">缩略图</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                            <tr>
+                                <td align="center"><?php echo $vo['id']; ?></td>
+                                <td align="center"><?php echo $vo['title']; ?></td>
+                                <td align="center"><?php echo $vo['author']; ?></td>
+                                <td align="center">
+                                <?php if($vo['state'] == 1): ?>
+                                    已推荐
+                                <?php else: ?>
+                                    未推荐
+                                <?php endif; ?>
+                                </td>
+                                <td align="center">
+                                    <?php if($vo['pic'] != ''): ?>
+                                    <img src="__IMG__/<?php echo $vo['pic']; ?>" height="50">
+                                    <?php else: ?>
+                                        暂无缩略图
+                                    <?php endif; ?>
+                                </td>
+                                <td align="center">
+                                    <a href="<?php echo url('article/edit', array('id' => $vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '<?php echo url('article/del', array('id' => $vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                         </tbody>
+                    </table>
+                </div>
+                <div style="text-align: right; margin-top: 10px;">
+                    <!--分页-->
+                    <?php echo $list->render(); ?>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\admin\list.htm";i:1506096652;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506261097;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\article\add.htm";i:1506443085;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506265074;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -18,6 +18,12 @@
     <link href="__PUBLIC__/style/demo.css" rel="stylesheet">
     <link href="__PUBLIC__/style/typicons.css" rel="stylesheet">
     <link href="__PUBLIC__/style/animate.css" rel="stylesheet">
+
+    <!--引入UEditor编辑器-->
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+
     
 </head>
 <body>
@@ -140,7 +146,7 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('article/lst'); ?>">
                                     <span class="menu-text">
                                         文章列表                                    </span>
                                 <i class="menu-expand"></i>
@@ -190,61 +196,105 @@
         </div>
         <!-- /Page Sidebar -->
 
-
-            <!-- Page Content -->
-            <div class="page-content">
-                <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                                        <li>
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
                         <a href="#">系统</a>
                     </li>
-                                        <li class="active">用户管理</li>
-                                        </ul>
-                </div>
-                <!-- /Page Breadcrumb -->
-            
+                    <li>
+                        <a href="<?php echo url('article/lst'); ?>">文章管理</a>
+                    </li>
+                    <li class="active">添加文章</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url('admin/add'); ?>'"> <i class="fa fa-plus"></i> Add
-</button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">新增文章</span>
+            </div>
             <div class="widget-body">
-                <div class="flip-scroll">
-                    <table class="table table-bordered table-hover">
-                        <thead class="">
-                            <tr>
-                                <th class="text-center" width="4%">ID</th>
-                                <th class="text-center">用户名称</th>
-                                <th class="text-center" width="14%">操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                            <tr>
-                                <td align="center"><?php echo $vo['id']; ?></td>
-                                <td align="center"><?php echo $vo['username']; ?></td>
-                                <td align="center">
-                                    <a href="<?php echo url('admin/edit', array('id' => $vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 编辑
-                                    </a>
-                                    <?php if($vo['id'] != 2): ?>
-                                    <a href="#" onClick="warning('确实要删除吗', '<?php echo url('admin/del', array('id' => $vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
-                                        <i class="fa fa-trash-o"></i> 删除
-                                    </a>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                            <?php endforeach; endif; else: echo "" ;endif; ?>
-                         </tbody>
-                    </table>
-                </div>
-                <div style="text-align: right; margin-top: 10px;">
-                    <!--分页-->
-                    <?php echo $list->render(); ?>
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" enctype="multipart/form-data" method="post">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">文章标题</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="title" placeholder="" name="title" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">文章作者</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="author" placeholder="" name="author" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">关键字</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="keywords" placeholder="" name="keywords" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">文章描述</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="desc" name="desc"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                            <div class="col-sm-6">
+                                <input id="pic" placeholder="" name="pic" type="file" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">所属栏目</label>
+                            <div class="col-sm-6">
+                                <select name="cateid">
+                                    <option value="">请选择栏目</option>
+                                    <?php if(is_array($caters) || $caters instanceof \think\Collection || $caters instanceof \think\Paginator): $i = 0; $__LIST__ = $caters;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                    <option value="<?php echo $vo['id']; ?>"><?php echo $vo['catename']; ?></option>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">是否推荐</label>
+                            <div class="col-sm-6">
+                                <label>
+                                    <input class="checkbox-slider colored-darkorange" name="state" type="checkbox">
+                                    <span class="text"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">文章内容</label>
+                            <div class="col-sm-6">
+                                <textarea id="content" name="content"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">提交</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -264,7 +314,11 @@
     <script src="__PUBLIC__/style/jquery.js"></script>
     <!--Beyond Scripts-->
     <script src="__PUBLIC__/style/beyond.js"></script>
-    
+
+    <!--实例化UEditor编辑器-->
+    <script type="text/javascript">
+        UE.getEditor('content',{initialFrameWidth:1000, initialFrameHeight:400,});
+    </script>
 
 
 </body></html>
