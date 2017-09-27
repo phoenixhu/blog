@@ -24,7 +24,7 @@ class Admin extends Controller
             // 获取表单输入数据input()
             $data = [
                 'username' => input('username'),
-                'password' => input('password'),
+                'password' => md5(input('password')),
             ];
 
             // 调用验证器判断输入操作
@@ -99,5 +99,11 @@ class Admin extends Controller
 
         $this->assign('admins', $admins);
         return $this->fetch();
+    }
+
+    /*退出登录*/
+    public function logout() {
+        session(null);
+        $this->success('已退出登录', 'Login/index');
     }
 }

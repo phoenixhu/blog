@@ -92,6 +92,8 @@ class Article extends Controller
 
             if (input('state') == 'on') {
                 $data['state'] = 1;
+            } else {
+                $data['state'] = 0;
             }
             if ($_FILES['pic']['tmp_name']) {
                 unlink('../public/static' . $article['pic']);// 删除原来的缩略图
