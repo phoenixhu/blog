@@ -2,11 +2,10 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Db;
 use app\admin\model\Cate as CateModel;
 
-class Cate extends Controller
+class Cate extends Base
 {
     /*栏目列表*/
     public function lst()

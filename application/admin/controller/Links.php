@@ -2,10 +2,9 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Db;
 use app\admin\model\Links as LinksModel;
-class Links extends Controller
+class Links extends Base
 {
     /*链接列表*/
     public function lst()

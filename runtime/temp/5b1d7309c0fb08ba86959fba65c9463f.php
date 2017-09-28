@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\admin\edit.htm";i:1506155775;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506525506;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506496446;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\admin\edit.htm";i:1506155775;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506531326;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506496446;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -57,7 +57,7 @@
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                 <li class="username"><a>David Stevenson</a></li>
                                 <li class="dropdown-footer">
-                                    <a href="/admin/user/logout.html">
+                                    <a href="<?php echo url('admin/logout'); ?>">
                                         退出登录
                                     </a>
                                 </li>

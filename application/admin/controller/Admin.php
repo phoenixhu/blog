@@ -2,12 +2,11 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Db;
 use app\admin\model\Admin as AdminModel;
-
-class Admin extends Controller
+class Admin extends Base
 {
+
     /*管理员列表*/
     public function lst()
     {

@@ -2,10 +2,9 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Db;
 use app\admin\model\Article as ArticleModel;
-class Article extends Controller
+class Article extends Base
 {
     /*文章列表*/
     public function lst()
