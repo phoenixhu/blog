@@ -1,19 +1,20 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:67:"C:\wamp64\www\tp5\public/../application/index\view\index\index.html";i:1507644564;s:69:"C:\wamp64\www\tp5\public/../application/index\view\common\header.html";i:1507644370;s:68:"C:\wamp64\www\tp5\public/../application/index\view\common\right.html";i:1507624252;s:67:"C:\wamp64\www\tp5\public/../application/index\view\common\foot.html";i:1505968580;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:71:"C:\wamp64\www\tp5\public/../application/index\view\article\article.html";i:1507606761;s:69:"C:\wamp64\www\tp5\public/../application/index\view\common\header.html";i:1506594496;s:68:"C:\wamp64\www\tp5\public/../application/index\view\common\right.html";i:1507624252;s:67:"C:\wamp64\www\tp5\public/../application/index\view\common\foot.html";i:1505968580;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>童老师ThinkPHP交流群：484519446</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="童老师ThinkPHP交流群：484519446" />
-<meta name="description" content="童老师ThinkPHP交流群：484519446" /> 
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet" />
-<script type='text/javascript' src='__PUBLIC__/style/ismobile.js'></script>
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>童老师ThinkPHP交流群：484519446</title>
+        <meta name="keywords" content="童老师ThinkPHP交流群：484519446" />
+        <meta name="description" content="童老师ThinkPHP交流群：484519446" />
+        <meta name="mobile-agent" content="format=html5; url=http://m.zx.wed114.cn/shenghuo/20160920156214.html" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet" />
+		<script type='text/javascript' src='__PUBLIC__/style/ismobile.js'></script>
+    </head>
 
-<body>
-<!--引入头部-->
-<!--头部分离-->
+    <body>
+        <!--引入头部-->
+        <!--头部分离-->
 <div class="ladytop">
     <div class="nav">
         <div class="left"><a href=""><img src="__PUBLIC__/images/hunshang.png" alt="wed114婚尚"></a></div>
@@ -29,44 +30,79 @@
 </div>
 
 <div class="hotmenu">
-    <div class="con">热门标签：<?php if(is_array($tagres) || $tagres instanceof \think\Collection || $tagres instanceof \think\Paginator): $i = 0; $__LIST__ = $tagres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='/index.php/index/search/index?keywords=<?php echo $vo['tagname']; ?>'><?php echo $vo['tagname']; ?></a><?php endforeach; endif; else: echo "" ;endif; ?></div>
+    <div class="con">热门标签：<a href='qiwenqushi/'>奇闻趣事</a> <a href=''>生活妙招</a> <a href='xingzuo/'>星座</a> <a href='qinzi/'>亲子</a> <a href='qiche/'>汽车</a> <a href='chongwubaike/'>宠物百科</a> <a href='jiaji/'>家居</a> </div>
 </div>
-<!--顶部通栏-->
-<div class="position"></div>
+        <!--顶部通栏-->
+        <script src='/jiehun/goto/my-65547.js' language='javascript'></script>
 
-<div class="overall">
+        <div class="position"><a href='<?php echo url('index/index'); ?>'>主页</a> > <a href='<?php echo url('cate/index', array('cateid'=>$cates['id'])); ?>'><?php echo $cates['catename']; ?></a> >  </div>
 
-	<div class="left">
-		<?php if(is_array($articleres) || $articleres instanceof \think\Collection || $articleres instanceof \think\Paginator): $i = 0; $__LIST__ = $articleres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-				<div class="xnews2">
-				<div class="pic"><a target="_blank" href=""><img src="<?php if($vo['pic'] != ''): ?>__IMG__<?php echo $vo['pic']; else: ?>__PUBLIC__/images/error.png<?php endif; ?>" alt=""/></a></div>
-				<div class="dec">
-				<h3><a target="_blank" href="<?php echo url('article/index', array('arid'=>$vo['id'])); ?>"><?php echo $vo['title']; ?></a></h3>
-				<div class="time">发布时间:<?php echo date("Y-m-d",$vo['time']); ?></div>
-				<p><?php echo $vo['desc']; ?></p>
-					<div class="time">
-						<?php
-                        $arr = explode(',', $vo['keywords']);
-                        foreach ($arr as $k=>$v) {
-						echo "<a href='/index.php/index/search/index?keywords=$v'>$v</a>";
-						}
-						?>
-					</div>
-				</div>
-				</div>
-		<?php endforeach; endif; else: echo "" ;endif; ?>
-				
-				<div class="pages">
-				<div class="plist" >
-					<?php echo $articleres->render(); ?>
-				</div>
-				</div>
-	</div>
+        <div class="overall">
+            <div class="left">
+                <div class="scrap">
+                    <h1><?php echo $articles['title']; ?></h1>
+                    <div class="spread">
+                        <span class="writor">发布时间：<?php echo date("Y-m-d",$articles['time']); ?></span>
+                        <span class="writor">编辑：<?php echo $articles['author']; ?></span>
+                        <span class="writor">标签：
+                            <?php
+                                $arr = explode(',', $articles['keywords']);
+                                foreach ($arr as $k=>$v) {
+                                    echo "<a href='#'>$v</a>";
+                                }
+                            ?>
+                        </span>
+                        <span class="writor">热度：<?php echo $articles['click']; ?></span>
+                    </div>
+                </div>
+
+                <!--百度分享-->
+                <script src='/jiehun/goto/my-65542.js' language='javascript'></script>
+
+                <div class="takeaway">
+                    <span class="btn arr-left"></span>
+                    <p class="jjxq"><?php echo $articles['desc']; ?></p>
+                    <span class="btn arr-right"></span>
+                </div>
+
+                  <script src='/jiehun/goto/my-65541.js' language='javascript'></script>
+
+                <div class="substance">
+                    <?php echo $articles['content']; ?>
+                </div>
+
+
+                <div class="biaoqian">
+                   
+                </div>
 
 
 
-	<!--引入右侧-->
-	<div class="right">
+                <!--相关阅读 -->
+                <div class="xgread">
+                    <div class="til"><h4>相关阅读</h4></div>
+                    <div class="lef"><!--相关阅读主题链接--><script src='/jiehun/goto/my-65540.js' language='javascript'></script></div>
+                    <div class="rig">
+                        <ul>
+                            <?php if(is_array($ralateres) || $ralateres instanceof \think\Collection || $ralateres instanceof \think\Paginator): $i = 0; $__LIST__ = $ralateres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                            <li><a href='<?php echo url('article/index', array('arid'=>$vo[0])); ?>' target="_blank"><?php echo $vo['1']; ?></a></li>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--频道推荐-->
+                <div class="hotsnew">
+                    <div class="til"><h4>频道推荐</h4></div>
+                    <ul>
+                        <?php if(is_array($recres) || $recres instanceof \think\Collection || $recres instanceof \think\Paginator): $i = 0; $__LIST__ = $recres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                        <li><div class="tu"><a href='<?php echo url('article/index', array('arid'=>$vo['id'])); ?>' target="_blank"><img src="<?php if($vo['pic'] != ''): ?>__IMG__<?php echo $vo['pic']; else: ?>__PUBLIC__/images/error.png<?php endif; ?>" alt=""/></a></div><p><a href='<?php echo url('article/index', array('arid'=>$vo['id'])); ?>'><?php echo $vo['title']; ?></a></p></li>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </ul>
+                </div>		
+            </div>
+            <!--引入右侧-->
+            <div class="right">
     <!--右侧各种广告-->
     <!--猜你喜欢-->
     <div id="hm_t_57953">
@@ -136,13 +172,12 @@
 
 </div>
 </div>
-
-<!--引入尾部-->
-<!--底部分离-->
+        <!--引入尾部-->
+        <!--底部分离-->
 <div class="footerd">
     <ul>
         <li>Copyright &#169; 2008-2016  all rights reserved 版权所有   <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">蜀icp备08107937号</a></li>
     </ul>
 </div>
-</body>
+    </body>
 </html>

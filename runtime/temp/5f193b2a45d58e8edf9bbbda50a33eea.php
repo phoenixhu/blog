@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\index\index.htm";i:1505987105;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506531326;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507630177;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"C:\wamp64\www\tp5\public/../application/admin\view\tags\list.htm";i:1507630909;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506531326;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507630177;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -21,8 +21,8 @@
     
 </head>
 <body>
-    <!--头部引入-->
-    <!-- 头部分离 -->
+<!--头部引入-->
+<!-- 头部分离 -->
 <div class="navbar">
     <div class="navbar-inner">
         <div class="navbar-container">
@@ -80,10 +80,11 @@
         </div>
     </div>
 </div>
-    <div class="main-container container-fluid">
-        <div class="page-container">
-    <!--左侧引入-->
-    <!--左侧分离分离-->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+<!--左侧引入-->
+<!--左侧分离分离-->
         <!-- Page Sidebar -->
         <div class="page-sidebar" id="sidebar">
             <!-- Page Sidebar Header-->
@@ -189,22 +190,64 @@
         </div>
         <!-- /Page Sidebar -->
 
+
             <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
-                        <li class="active">控制面板</li>
-                    </ul>
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li class="active">Tag标签管理</li>
+                                        </ul>
                 </div>
+                <!-- /Page Breadcrumb -->
+            
                 <!-- Page Body -->
                 <div class="page-body">
                     
-				<div style="text-align:center; line-height:1000%; font-size:24px;">
-                童老师THinkPHP5.0正式版 第一季 博客项目开发<br>
-                <p style="color:#aaa;">ThinkPHP交流群①：484519446【满】 | 群②：480018415【满】  | 群③：198909858</p></div>
+<button type="button" tooltip="添加Tag标签" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url('tags/add'); ?>'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="4%">ID</th>
+                                <th class="text-center">Tag标签名称</th>
+                                <th class="text-center" width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                            <tr>
+                                <td align="center"><?php echo $vo['id']; ?></td>
+                                <td align="center"><?php echo $vo['tagname']; ?></td>
+                                <td align="center">
+                                    <a href="<?php echo url('tags/edit', array('id' => $vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '<?php echo url('tags/del', array('id' => $vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                         </tbody>
+                    </table>
                 </div>
-                
+                <div style="text-align: right; margin-top: 10px;">
+                    <!--分页-->
+                    <?php echo $list->render(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 </div>
                 <!-- /Page Body -->
@@ -222,5 +265,4 @@
     
 
 
-</body>
-</html>
+</body></html>

@@ -23,7 +23,7 @@ class Article extends Base
             $data = [
                 'title' => input('title'),
                 'author' => input('author'),
-                'keywords' => input('keywords'),
+                'keywords' => str_replace('，', ',', input('keywords')),
                 'desc' => input('desc'),
                 'cateid' => input('cateid'),
                 'content' => input('content'),
@@ -83,7 +83,7 @@ class Article extends Base
                 'id' => input('id'),
                 'title' => input('title'),
                 'author' => input('author'),
-                'keywords' => input('keywords'),
+                'keywords' => str_replace('，', ',', input('keywords')),
                 'desc' => input('desc'),
                 'cateid' => input('cateid'),
                 'content' => input('content'),
@@ -95,7 +95,7 @@ class Article extends Base
                 $data['state'] = 0;
             }
             if ($_FILES['pic']['tmp_name']) {
-                unlink('../public/static' . $article['pic']);// 删除原来的缩略图
+                @unlink('../public/static' . $article['pic']);// 删除原来的缩略图
                 $file = request()->file('pic');
                 $info = $file->move(ROOT_PATH . 'public' . DS . 'static/uploads');
                 $data['pic'] = '/uploads/' . $info->getSaveName();

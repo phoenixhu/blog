@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:67:"C:\wamp64\www\tp5\public/../application/admin\view\article\list.htm";i:1506496446;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1505987105;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506496446;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:67:"C:\wamp64\www\tp5\public/../application/admin\view\article\list.htm";i:1506612015;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506531326;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506496446;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -50,19 +50,19 @@
                                     <img src="__PUBLIC__/images/adam-jansen.jpg">
                                 </div>
                                 <section>
-                                    <h2><span class="profile"><span>admin</span></span></h2>
+                                    <h2><span class="profile"><span><?php echo \think\Request::instance()->session('username'); ?></span></span></h2>
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                 <li class="username"><a>David Stevenson</a></li>
                                 <li class="dropdown-footer">
-                                    <a href="/admin/user/logout.html">
+                                    <a href="<?php echo url('admin/logout'); ?>">
                                         退出登录
                                     </a>
                                 </li>
                                 <li class="dropdown-footer">
-                                    <a href="/admin/user/changePwd.html">
+                                    <a href="<?php echo url('admin/edit', array('id'=>\think\Request::instance()->session('uid'))); ?>">
                                         修改密码
                                     </a>
                                 </li>
