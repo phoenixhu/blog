@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:71:"C:\wamp64\www\tp5\public/../application/index\view\article\article.html";i:1507606761;s:69:"C:\wamp64\www\tp5\public/../application/index\view\common\header.html";i:1506594496;s:68:"C:\wamp64\www\tp5\public/../application/index\view\common\right.html";i:1507624252;s:67:"C:\wamp64\www\tp5\public/../application/index\view\common\foot.html";i:1505968580;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:71:"C:\wamp64\www\tp5\public/../application/index\view\article\article.html";i:1507784304;s:69:"C:\wamp64\www\tp5\public/../application/index\view\common\header.html";i:1507780854;s:68:"C:\wamp64\www\tp5\public/../application/index\view\common\right.html";i:1507693452;s:67:"C:\wamp64\www\tp5\public/../application/index\view\common\foot.html";i:1507735530;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>童老师ThinkPHP交流群：484519446</title>
-        <meta name="keywords" content="童老师ThinkPHP交流群：484519446" />
-        <meta name="description" content="童老师ThinkPHP交流群：484519446" />
+        <title>EG-Blog管理系统</title>
+        <meta name="keywords" content="EG-Blog管理系统" />
+        <meta name="description" content="EG-Blog管理系统" />
         <meta name="mobile-agent" content="format=html5; url=http://m.zx.wed114.cn/shenghuo/20160920156214.html" />
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
 		<link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
         <!--头部分离-->
 <div class="ladytop">
     <div class="nav">
-        <div class="left"><a href=""><img src="__PUBLIC__/images/hunshang.png" alt="wed114婚尚"></a></div>
+        <div class="left"><a href="<?php echo url('index/index'); ?>"><img src="__PUBLIC__/images/logo.png" ></a></div>
         <div class="right">
             <div class="box">
                 <a href="<?php echo url('index/index'); ?>"  rel='dropmenu209'>首页</a>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="hotmenu">
-    <div class="con">热门标签：<a href='qiwenqushi/'>奇闻趣事</a> <a href=''>生活妙招</a> <a href='xingzuo/'>星座</a> <a href='qinzi/'>亲子</a> <a href='qiche/'>汽车</a> <a href='chongwubaike/'>宠物百科</a> <a href='jiaji/'>家居</a> </div>
+    <div class="con">热门标签：<?php if(is_array($tagres) || $tagres instanceof \think\Collection || $tagres instanceof \think\Paginator): $i = 0; $__LIST__ = $tagres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='/index.php/index/search/index?keywords=<?php echo $vo['tagname']; ?>'><?php echo $vo['tagname']; ?></a><?php endforeach; endif; else: echo "" ;endif; ?></div>
 </div>
         <!--顶部通栏-->
         <script src='/jiehun/goto/my-65547.js' language='javascript'></script>
@@ -56,8 +56,27 @@
                     </div>
                 </div>
 
-                <!--百度分享-->
-                <script src='/jiehun/goto/my-65542.js' language='javascript'></script>
+                <!-- 分享 -->
+                <div class="jiathis_style"><span class="jiathis_txt">分享到：</span>
+                    <a class="jiathis_button_cqq"></a>
+                    <a class="jiathis_button_weixin"></a>
+                    <a class="jiathis_button_qzone"></a>
+                    <a class="jiathis_button_tsina"></a>
+                    <a class="jiathis_button_googleplus"></a>
+                    <a class="jiathis_button_fb"></a>
+                    <a href="http://www.jiathis.com/share?uid=1716894" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+                    <a class="jiathis_counter_style"></a>
+                </div>
+                <script type="text/javascript" >
+                    var jiathis_config={
+                        data_track_clickback:true,
+                        summary:"",
+                        shortUrl:false,
+                        hideMore:false
+                    }
+                </script>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1716894" charset="utf-8"></script>
+                <!-- 分享 END -->
 
                 <div class="takeaway">
                     <span class="btn arr-left"></span>
@@ -90,7 +109,15 @@
                         </ul>
                     </div>
                 </div>
-
+                <!--PC版-->
+                <div id="SOHUCS" sid="($ralateres.id}"></div>
+                <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+                <script type="text/javascript">
+                    window.changyan.api.config({
+                        appid: 'cytgcWVRD',
+                        conf: 'prod_2e3a6a213177565d7642ae47cf2a99bf'
+                    });
+                </script>
                 <!--频道推荐-->
                 <div class="hotsnew">
                     <div class="til"><h4>频道推荐</h4></div>
@@ -176,7 +203,7 @@
         <!--底部分离-->
 <div class="footerd">
     <ul>
-        <li>Copyright &#169; 2008-2016  all rights reserved 版权所有   <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">蜀icp备08107937号</a></li>
+        <li>Copyright &#169; 2017-<?php echo date('Y');?> all rights reserved 版权所有<a href="https://github.com/phoenixhu/blog" target="_blank" rel="nofollow">开源地址</a></li>
     </ul>
 </div>
     </body>

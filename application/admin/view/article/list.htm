@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>EG-Blog管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,7 +65,7 @@
                             {volist name="list" id="vo"}
                             <tr>
                                 <td align="center">{$vo.id}</td>
-                                <td align="center">{$vo.title}</td>
+                                <td align="center"><a target="_blank" href="{:url('index/article/index', array('arid'=>$vo['id']))}">{$vo.title}</a></td>
                                 <td align="center">{$vo.author}</td>
                                 <td align="center">
                                 {if condition="$vo['state'] eq 1 "}

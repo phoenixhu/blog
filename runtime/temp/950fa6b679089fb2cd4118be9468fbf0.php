@@ -1,8 +1,16 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\index\index.htm";i:1505987105;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506531326;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507630177;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\index\index.htm";i:1507731063;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1507732687;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507702943;}*/ ?>
+<?php
+/* http://www.upupw.net */
+/* webmaster@upupw.net */
+$version="15.12.5AQ";
+date_default_timezone_set('Asia/Shanghai') && error_reporting(0);
+function _GET($n) { return isset($_GET[$n]) ? $_GET[$n] : NULL; }
+function _SERVER($n) { return isset($_SERVER[$n]) ? $_SERVER[$n] : '[undefine]'; }
+?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>EG-Blog管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +26,23 @@
     <link href="__PUBLIC__/style/demo.css" rel="stylesheet">
     <link href="__PUBLIC__/style/typicons.css" rel="stylesheet">
     <link href="__PUBLIC__/style/animate.css" rel="stylesheet">
-    
+    <style type="text/css">
+        <!--
+        *{margin:0px;padding:0px;}
+        body {background-color:#FFFFFF;color:#000000;margin:0px;font-family:"\5fae\8f6f\96c5\9ed1",tahoma,arial,sans-serif;}
+        input {text-align:center;width:200px;height:20px;padding:5px;}
+        a:link {color:green; text-decoration:none;}
+        a:visited {color:green;text-decoration:none;}
+        a:active {color:green;text-decoration:none;}
+        a:hover {color:#ed776b;text-decoration:none;}
+        table {border-collapse:collapse;margin:10px 0px;clear:both;}
+        .inp tr th, td {padding:2px 5px 2px 5px;vertical-align:center;text-align:center;height:30px; border:1px #FFFFFF solid;}
+        .er { text-align: right; background-color: #d3e1e5; }
+        .ec { text-align: center; background-color: #1abc9c; font-weight: bold; color: #FFFFFF; }
+        .fl { text-align: left; background-color: #ecf0f1; color: #505050; }
+        -->
+    </style>
+
 </head>
 <body>
     <!--头部引入-->
@@ -28,7 +52,7 @@
         <div class="navbar-container">
             <!-- Navbar Barnd -->
             <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
+                <a href="<?php echo url('/admin/index'); ?>" class="navbar-brand">
                     <small>
                         <img src="__PUBLIC__/images/logo.png" alt="">
                     </small>
@@ -47,7 +71,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="__PUBLIC__/images/adam-jansen.jpg">
+                                    <img src="__PUBLIC__/images/manager.png">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span><?php echo \think\Request::instance()->session('username'); ?></span></span></h2>
@@ -175,7 +199,14 @@
                         <li>
                             <a href="<?php echo url('tags/lst'); ?>">
                                     <span class="menu-text">
-                                        Tags标签管理                                   </span>
+                                        Tags标签管理
+                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                            <a href="<?php echo url('logo/index'); ?>">
+                                    <span class="menu-text">
+                                        Logo管理
+                                    </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>
@@ -199,10 +230,32 @@
                 </div>
                 <!-- Page Body -->
                 <div class="page-body">
-                    
-				<div style="text-align:center; line-height:1000%; font-size:24px;">
-                童老师THinkPHP5.0正式版 第一季 博客项目开发<br>
-                <p style="color:#aaa;">ThinkPHP交流群①：484519446【满】 | 群②：480018415【满】  | 群③：198909858</p></div>
+
+				<div style="text-align:center; line-height:100%; font-size:20px;">
+
+                    <table class="table" contenteditable="true">
+                        <tr>
+                            <th colspan="2" class="ec" width="50%">服务器信息</th>
+                        </tr>
+                        <tr>
+                            <td class="er" width="12%">服务器域名</td>
+                            <td class="fl" width="38%"><?=_SERVER('SERVER_NAME')?></td>
+                        </tr>
+                        <tr>
+                            <td class="er">服务器端口</td>
+                            <td class="fl"><?=_SERVER('SERVER_ADDR').':'._SERVER('SERVER_PORT')?></td>
+                        </tr>
+                        <tr>
+                            <td class="er">服务器环境</td>
+                            <td class="fl"><?=stripos(_SERVER('SERVER_SOFTWARE'), 'PHP')?_SERVER('SERVER_SOFTWARE'):_SERVER('SERVER_SOFTWARE')?></td>
+                        </tr>
+                        <tr>
+                            <td class="er">服务器标准时</td>
+                            <td class="fl">
+                                <?=gmdate('Y-m-d H:i:s', time() + 3600 * 8)?>
+                            </td>
+                        </tr>
+                </div>
                 </div>
                 
 

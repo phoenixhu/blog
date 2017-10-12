@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"C:\wamp64\www\tp5\public/../application/admin\view\admin\add.htm";i:1507724299;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1507732687;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507702943;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\logo\index.htm";i:1507724298;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1507732687;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507702943;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
@@ -197,59 +197,53 @@
         </div>
         <!-- /Page Sidebar -->
 
-        <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
                         <a href="#">系统</a>
                     </li>
-                    <li>
-                        <a href="<?php echo url('admin/lst'); ?>">管理员管理</a>
-                    </li>
-                    <li class="active">添加管理员</li>
-                </ul>
-            </div>
-            <!-- /Page Breadcrumb -->
+                                        <li class="active">Logo管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+            
                 <!-- Page Body -->
                 <div class="page-body">
-                    
-<div class="row">
-    <div class="col-lg-12 col-sm-12 col-xs-12">
-        <div class="widget">
-            <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增用户</span>
-            </div>
-            <div class="widget-body">
-                <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="" method="post">
-                        <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员名称</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="username" placeholder="" name="username" type="text">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
-                            <div class="col-sm-6">
-                                <input class="form-control" id="password" placeholder="" name="password" type="password">
-                            </div>
-                            <p class="help-block col-sm-4 red">* 必填</p>
-                        </div>  
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">提交</button>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-header bordered-bottom bordered-blue">
+                                    <span class="widget-caption">Logo管理</span>
+                                </div>
+                                <div class="widget-body">
+                                    <div id="horizontal-form">
+                                        <form class="form-horizontal" role="form" action="" enctype="multipart/form-data" method="post">
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+                                                    <span style="color: red">必须为png格式,建议大小为180*40</span>
+                                                    <input id="logo" placeholder="" name="logo" type="file">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-6">
+
+                                                <button type="submit" class="btn btn-default">提交</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 
                 </div>
                 <!-- /Page Body -->

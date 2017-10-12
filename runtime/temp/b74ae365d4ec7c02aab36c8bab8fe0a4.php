@@ -1,8 +1,8 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\login\login.htm";i:1506531326;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:66:"C:\wamp64\www\tp5\public/../application/admin\view\login\login.htm";i:1507724299;}*/ ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><!--Head--><head>
     <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>EG-Blog管理系统</title>
     <meta name="description" content="login page">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
                 </div>
             </div>
                 <div class="logobox">
-                    <p class="text-center">童老师ThinkPHP交流群：4845194464</p>
+                    <p class="text-center">EG-Blog管理系统4</p>
                 </div>
         </form>
     </div>

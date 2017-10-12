@@ -1,8 +1,8 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\links\list.htm";i:1506155775;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506525600;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506496446;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\wamp64\www\tp5\public/../application/admin\view\links\list.htm";i:1507724298;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1507732279;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507702943;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>EG-Blog管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
         <div class="navbar-container">
             <!-- Navbar Barnd -->
             <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
+                <a href="<?php echo url('/admin/index'); ?>" class="navbar-brand">
                     <small>
                         <img src="__PUBLIC__/images/logo.png" alt="">
                     </small>
@@ -174,9 +174,16 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('tags/lst'); ?>">
                                     <span class="menu-text">
-                                        配置                                   </span>
+                                        Tags标签管理
+                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                            <a href="<?php echo url('logo/index'); ?>">
+                                    <span class="menu-text">
+                                        Logo管理
+                                    </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>

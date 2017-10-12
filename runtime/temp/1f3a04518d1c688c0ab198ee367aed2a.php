@@ -1,8 +1,8 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:67:"C:\wamp64\www\tp5\public/../application/admin\view\article\list.htm";i:1506612015;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1506531326;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1506496446;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:67:"C:\wamp64\www\tp5\public/../application/admin\view\article\list.htm";i:1507733856;s:65:"C:\wamp64\www\tp5\public/../application/admin\view\common\top.htm";i:1507732687;s:66:"C:\wamp64\www\tp5\public/../application/admin\view\common\left.htm";i:1507702943;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>EG-Blog管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
         <div class="navbar-container">
             <!-- Navbar Barnd -->
             <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
+                <a href="<?php echo url('/admin/index'); ?>" class="navbar-brand">
                     <small>
                         <img src="__PUBLIC__/images/logo.png" alt="">
                     </small>
@@ -47,7 +47,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="__PUBLIC__/images/adam-jansen.jpg">
+                                    <img src="__PUBLIC__/images/manager.png">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span><?php echo \think\Request::instance()->session('username'); ?></span></span></h2>
@@ -174,9 +174,16 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="/admin/document/index.html">
+                            <a href="<?php echo url('tags/lst'); ?>">
                                     <span class="menu-text">
-                                        配置                                   </span>
+                                        Tags标签管理
+                                    </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                            <a href="<?php echo url('logo/index'); ?>">
+                                    <span class="menu-text">
+                                        Logo管理
+                                    </span>
                                 <i class="menu-expand"></i>
                             </a>
                         </li>
@@ -228,7 +235,7 @@
                             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                             <tr>
                                 <td align="center"><?php echo $vo['id']; ?></td>
-                                <td align="center"><?php echo $vo['title']; ?></td>
+                                <td align="center"><a target="_blank" href="<?php echo url('index/article/index', array('arid'=>$vo['id'])); ?>"><?php echo $vo['title']; ?></a></td>
                                 <td align="center"><?php echo $vo['author']; ?></td>
                                 <td align="center">
                                 <?php if($vo['state'] == 1): ?>
