@@ -3,7 +3,9 @@ EG-Blog管理系统
 
 EG-Blog是一款简单优雅的文章管理系统，采用`thinkphp5.0`框架编写，前端采用`bootstrap`框架，
 这个项目是作者根据一些教程和文档开发出来的，所以很多功能都不是很完善或者存在某些bug，请多多赐教！
-
+![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
 
 
 ## 目录结构
@@ -118,6 +120,6 @@ www  WEB部署目录（或者子目录）
 
 ## 安装和演示
 * 安装：导入根目录下的`blog.sql`文件，然后修改application/database.php文件中的数据库信息；
-后台登录地址：http://域名/admin/login       账号密码：admin admin
-* 演示：
-  http://blog.geiliwu.cn
+* 后台登录地址：http://域名/admin/login
+* 账号密码：admin admin
+* 演示：http://blog.geiliwu.cn
