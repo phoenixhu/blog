@@ -3,8 +3,9 @@ EG-Blog管理系统
 
 EG-Blog是一款简单优雅的文章管理系统，采用`thinkphp5.0`框架编写，前端采用`bootstrap`框架，
 这个项目是作者根据一些教程和文档开发出来的，所以很多功能都不是很完善或者存在某些bug，请多多赐教！
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](https://raw.githubusercontent.com/phoenixhu/blog/master/public/static/index/images/%E4%B8%BB%E9%A1%B5.png)
+![Image text](https://raw.githubusercontent.com/phoenixhu/blog/master/public/static/index/images/%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2.png)
+![Image text](https://raw.githubusercontent.com/phoenixhu/blog/master/public/static/index/images/%E5%90%8E%E5%8F%B0.png)
 
 ## 目录结构
 
