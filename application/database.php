@@ -17,7 +17,7 @@ return [
     // 数据库名
     'database'        => 'blog',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'blog',
     // 密码
     'password'        => 'qazwsx123',
     // 端口

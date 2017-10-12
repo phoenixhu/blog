@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:71:"C:\wamp64\www\tp5\public/../application/index\view\article\article.html";i:1507784304;s:69:"C:\wamp64\www\tp5\public/../application/index\view\common\header.html";i:1507780854;s:68:"C:\wamp64\www\tp5\public/../application/index\view\common\right.html";i:1507693452;s:67:"C:\wamp64\www\tp5\public/../application/index\view\common\foot.html";i:1507735530;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:71:"/www/wwwroot/blog/public/../application/index/view/article/article.html";i:1507819069;s:69:"/www/wwwroot/blog/public/../application/index/view/common/header.html";i:1507809656;s:68:"/www/wwwroot/blog/public/../application/index/view/common/right.html";i:1507722252;s:67:"/www/wwwroot/blog/public/../application/index/view/common/foot.html";i:1507764332;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -95,7 +95,15 @@
                    
                 </div>
 
-
+                <!--PC版-->
+                <div id="SOHUCS" ></div>
+                <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+                <script type="text/javascript">
+                window.changyan.api.config({
+                appid: 'cyt4EkQqY',
+                conf: 'prod_a939e4848c3b0220f06bc560355719da'
+                });
+                </script>
 
                 <!--相关阅读 -->
                 <div class="xgread">
@@ -109,15 +117,7 @@
                         </ul>
                     </div>
                 </div>
-                <!--PC版-->
-                <div id="SOHUCS" sid="($ralateres.id}"></div>
-                <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
-                <script type="text/javascript">
-                    window.changyan.api.config({
-                        appid: 'cytgcWVRD',
-                        conf: 'prod_2e3a6a213177565d7642ae47cf2a99bf'
-                    });
-                </script>
+                
                 <!--频道推荐-->
                 <div class="hotsnew">
                     <div class="til"><h4>频道推荐</h4></div>

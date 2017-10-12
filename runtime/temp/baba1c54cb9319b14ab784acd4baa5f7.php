@@ -1,16 +1,14 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:65:"C:\wamp64\www\tp5\public/../application/index\view\cate\cate.html";i:1507724298;s:69:"C:\wamp64\www\tp5\public/../application/index\view\common\header.html";i:1507715394;s:68:"C:\wamp64\www\tp5\public/../application/index\view\common\right.html";i:1507693452;s:67:"C:\wamp64\www\tp5\public/../application/index\view\common\foot.html";i:1507735530;}*/ ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:67:"/www/wwwroot/blog/public/../application/index/view/index/index.html";i:1507730030;s:69:"/www/wwwroot/blog/public/../application/index/view/common/header.html";i:1507809656;s:68:"/www/wwwroot/blog/public/../application/index/view/common/right.html";i:1507722252;s:67:"/www/wwwroot/blog/public/../application/index/view/common/foot.html";i:1507764332;}*/ ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EG-Blog管理系统</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="EG-Blog管理系统"/>
-    <meta name="description" content="EG-Blog管理系统"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
-    <link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    <script type='text/javascript' src='images/js/ismobile.js'></script>
+<title>EG-Blog管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="EG-Blog管理系统" />
+<meta name="description" content="EG-Blog管理系统" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link href="__PUBLIC__/style/lady.css" type="text/css" rel="stylesheet" />
+<script type='text/javascript' src='__PUBLIC__/style/ismobile.js'></script>
 </head>
 
 <body>
@@ -18,7 +16,7 @@
 <!--头部分离-->
 <div class="ladytop">
     <div class="nav">
-        <div class="left"><a href=""><img src="__PUBLIC__/images/logo.png" ></a></div>
+        <div class="left"><a href="<?php echo url('index/index'); ?>"><img src="__PUBLIC__/images/logo.png" ></a></div>
         <div class="right">
             <div class="box">
                 <a href="<?php echo url('index/index'); ?>"  rel='dropmenu209'>首页</a>
@@ -34,42 +32,41 @@
     <div class="con">热门标签：<?php if(is_array($tagres) || $tagres instanceof \think\Collection || $tagres instanceof \think\Paginator): $i = 0; $__LIST__ = $tagres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href='/index.php/index/search/index?keywords=<?php echo $vo['tagname']; ?>'><?php echo $vo['tagname']; ?></a><?php endforeach; endif; else: echo "" ;endif; ?></div>
 </div>
 <!--顶部通栏-->
-<div class="position"><a href='<?php echo url(' index/index'); ?>'>主页</a> > <a href="<?php echo url('cate/index', array('cateid'=>$cates['id'])); ?>"><?php echo $cates['catename']; ?></a> ></div>
+<div class="position"></div>
 
 <div class="overall">
 
-    <div class="left">
-        <?php if(is_array($articleres) || $articleres instanceof \think\Collection || $articleres instanceof \think\Paginator): $i = 0; $__LIST__ = $articleres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <div class="xnews2">
-            <div class="pic">
-                <a target="_blank" href="<?php echo url('article/index', array('arid'=>$vo['id'])); ?>"><img src="<?php if($vo['pic'] != ''): ?>__IMG__<?php echo $vo['pic']; else: ?>__PUBLIC__/images/error.png<?php endif; ?>" alt=""/></a></div>
-            <div class="dec">
-                <h3><a target="_blank" href="<?php echo url('article/index', array('arid'=>$vo['id'])); ?>"><?php echo $vo['title']; ?></a></h3>
-                <div class="time">发布时间:<?php echo date("Y-m-d",$vo['time']); ?></div>
-                <p>
-                    <?php echo $vo['desc']; ?>
-                </p>
-                <div class="time">
-                    <?php
+	<div class="left">
+		<?php if(is_array($articleres) || $articleres instanceof \think\Collection || $articleres instanceof \think\Paginator): $i = 0; $__LIST__ = $articleres;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+				<div class="xnews2">
+				<div class="pic"><a target="_blank" href=""><img src="<?php if($vo['pic'] != ''): ?>__IMG__<?php echo $vo['pic']; else: ?>__PUBLIC__/images/error.png<?php endif; ?>" alt=""/></a></div>
+				<div class="dec">
+				<h3><a target="_blank" href="<?php echo url('article/index', array('arid'=>$vo['id'])); ?>"><?php echo $vo['title']; ?></a></h3>
+				<div class="time">发布时间:<?php echo date("Y-m-d",$vo['time']); ?></div>
+				<p><?php echo $vo['desc']; ?></p>
+					<div class="time">
+						<?php
                         $arr = explode(',', $vo['keywords']);
                         foreach ($arr as $k=>$v) {
-                            echo "<a href='/index.php/index/search/index?keywords=$v'>$v</a>";
-                        }
-                    ?>
-                </div>
-            </div>
-        </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
+						echo "<a href='/index.php/index/search/index?keywords=$v'>$v</a>";
+						}
+						?>
+					</div>
+				</div>
+				</div>
+		<?php endforeach; endif; else: echo "" ;endif; ?>
+				
+				<div class="pages">
+				<div class="plist" >
+					<?php echo $articleres->render(); ?>
+				</div>
+				</div>
+	</div>
 
-        <div class="pages">
-            <div class="plist">
-                <?php echo $articleres->render(); ?>
-            </div>
-        </div>
-    </div>
 
-    <!--引入右侧-->
-    <div class="right">
+
+	<!--引入右侧-->
+	<div class="right">
     <!--右侧各种广告-->
     <!--猜你喜欢-->
     <div id="hm_t_57953">
@@ -138,8 +135,8 @@
 
 
 </div>
-
 </div>
+
 <!--引入尾部-->
 <!--底部分离-->
 <div class="footerd">
